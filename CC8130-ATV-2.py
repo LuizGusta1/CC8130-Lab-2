@@ -48,11 +48,23 @@ frases = [
      "0288b32001adf2f237ba8410f8415e50")
 ]
 
-for frase, sha256_corr, md5_corr in frases:
-    sha256_calculado = calcular_sha256(frase)
-    md5_calculado = calcular_md5(frase)
+count = 0
+for frase in frases:
+    count = count + 1
+    sha256_calculado = calcular_sha256(frase[0])
+    md5_calculado = calcular_md5(frase[0])
+    print("\n")
+
+    if(sha256_calculado == frase[1]):
+        print("SHA256 VERDADEIRO PARA A " + str(count) + "° FRASE")
     
-    if sha256_calculado == sha256_corr and md5_calculado == md5_corr:
-        print(f'Frase: "{frase}" -> Verdadeira')
     else:
-        print(f'Frase: "{frase}" -> Falsa')
+        print("SHA256 FALSO PARA A " + str(count) + "° FRASE")
+
+    if(md5_calculado == frase[2]):
+        print("MD5 VERDADEIRO PARA A " + str(count) + "° FRASE")
+    
+    else:
+        print("MD5 FALSO PARA A " + str(count) + "° FRASE")
+    
+    
